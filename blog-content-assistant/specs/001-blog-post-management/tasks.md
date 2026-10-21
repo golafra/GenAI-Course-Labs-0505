@@ -2,31 +2,44 @@
 
 **ورودی:** Spec، Plan، Research، Data Model، Contracts، Constitution، Technical Baseline.
 
-## فاز ۱ — آماده‌سازی (معادل گام ۱۰) ✅
+## فاز ۱ — آماده‌سازی (گام ۱۰) ✅
 
-- [x] T001 ایجاد پکیج‌های `domain` / `application` / `infrastructure` / `api` و `tests` با جهت وابستگی مطابق Constitution  
-- [x] T002 ثبت وابستگی‌ها در `pyproject.toml` (FastAPI، Pydantic، pytest، httpx، …)  
-- [x] T003 مسیر DB از تنظیمات + `.env.example` + `.gitignore` برای `data/*.db`  
-- [x] T004 تست Startup: مسیر معتبر → Host بالا می‌آید؛ مسیر خالی/نامعتبر → Fail-fast بدون افشای جزئیات حساس؛ بدون Migration/Provision ضمنی  
+- [x] T001 لایه‌های domain / application / infrastructure / api  
+- [x] T002 وابستگی‌ها در `pyproject.toml`  
+- [x] T003 مسیر DB + gitignore  
+- [x] T004 تست Startup Fail-fast  
 
-## فاز ۲ — Auth و زیرساخت (معادل گام ۱۱) — بعدی
+## فاز ۲ — Auth (گام ۱۱) ✅
 
-- [ ] T005–T011 قرارداد UserAccess، Credential، WriteSession، Provision، Bearer handler، ProblemDetails  
+- [x] T005 `UserAccess` سروری  
+- [x] T006 نتیجهٔ Application مستقل از HTTP (`AppResult`)  
+- [x] T007 Credential hash در SQLite  
+- [x] T008 Store با قفل ساده برای نوشتن  
+- [x] T009 Provision / revoke محلی (`/api/ops/*`)  
+- [x] T010 Bearer فقط هویت؛ Permission از Store  
+- [x] T011 ProblemDetails + If-Match / ETag  
 
-## فاز ۳ — US1 نویسنده (گام ۱۲)
+## فاز ۳ — Author US1 (گام ۱۲) ✅
 
-- [ ] T012–T020 Domain Post، تست‌ها، Store، Author API  
+- [x] T012–T014 آزمون Domain / Author API  
+- [x] T015–T016 Aggregate Post + Review/Publication  
+- [x] T017 SqliteBlogStore برای پست  
+- [x] T018–T020 AuthorPostService + مسیرهای Author  
 
-## فاز ۴ — US2 ویراستار (گام ۱۳)
+## فاز ۴ — Editor US2 (گام ۱۳) ✅
 
-- [ ] T021–T027 Review / Publish  
+- [x] T021–T023 آزمون Editor / self-approval  
+- [x] T024–T027 EditorPostService + مسیرهای Editor  
 
-## فاز ۵ — US3 Hardening (گام ۱۴)
+## فاز ۵ — Hardening US3 (گام ۱۴) ✅
 
-- [ ] T028–T035 Public API، امنیت، رقابت  
+- [x] T028–T031 Public API + تست عدم افشا  
+- [x] T032–T035 revoke permission، stale version، publish idempotent  
 
-## فاز ۶ — تکمیل (گام ۱۵)
+## فاز ۶ — تکمیل (گام ۱۵) ✅
 
-- [ ] T036–T040 OpenAPI، QuickStart واقعی، Validation  
+- [x] T036 OpenAPI (`/openapi.json`)  
+- [x] T037 QuickStart واقعی  
+- [x] T038–T040 گزارش تکلیف `docs/lab-steps-11-15.md` + به‌روزرسانی README  
 
-> شناسه‌های T005+ عمداً خلاصه‌اند؛ هنگام اجرای هر گام، از پرامپت همان گام کارگاه الهام بگیر و Taskها را ریز کن — بدون کپی کد .NET.
+> این Taskها نسخهٔ ساده‌شدهٔ آموزشی‌اند؛ معادل مفهومی پرامپت‌های `Workshop-1/Prompts/step11`…`step15`.

@@ -1,34 +1,45 @@
-# قرارداد HTTP (پیش‌نویس — تکمیل در فازهای ۲–۶)
+# قرارداد HTTP — وضعیت پس از گام ۱۵
 
-Base: `/api`
+Base: `/api`  
+Auth: `Authorization: Bearer <token>`  
+Mutationهای پس از ایجاد: هدر `If-Match` با مقدار version (ETag بدون یا با کوتیشن)
 
-## عمومی (US3)
+## Ops (محلی)
 
-- `GET /api/posts` — فقط published  
-- `GET /api/posts/{id}` — فقط published؛ ناموجود/خصوصی → 404 یکسان  
+| Method | Path | توضیح |
+|--------|------|--------|
+| POST | `/api/ops/provision` | ساخت کاربر + token یک‌بارمصرف در پاسخ |
+| POST | `/api/ops/revoke-token/{userId}` | بی‌اعتبار کردن credential |
+| POST | `/api/ops/revoke-permissions/{userId}` | صفر کردن Permissionها |
 
-## نویسنده (US1) — نیازمند Auth
+## Author
 
-- `POST /api/author/posts`  
-- `GET /api/author/posts`  
-- `GET /api/author/posts/{id}`  
-- `PUT /api/author/posts/{id}` + `If-Match`  
-- `DELETE /api/author/posts/{id}` + `If-Match`  
-- `POST /api/author/posts/{id}/submit` + `If-Match`  
+| Method | Path |
+|--------|------|
+| POST | `/api/author/posts` |
+| GET | `/api/author/posts` |
+| GET | `/api/author/posts/{id}` |
+| PUT | `/api/author/posts/{id}` |
+| DELETE | `/api/author/posts/{id}` |
+| POST | `/api/author/posts/{id}/submit` |
 
-## ویراستار (US2) — نیازمند Auth
+## Editor
 
-- `GET /api/editor/queue`  
-- `GET /api/editor/posts/{id}`  
-- `POST /api/editor/posts/{id}/request-changes`  
-- `POST /api/editor/posts/{id}/approve`  
-- `POST /api/editor/posts/{id}/publish`  
+| Method | Path |
+|--------|------|
+| GET | `/api/editor/queue` |
+| GET | `/api/editor/posts/{id}` |
+| POST | `/api/editor/posts/{id}/request-changes` |
+| POST | `/api/editor/posts/{id}/approve` |
+| POST | `/api/editor/posts/{id}/publish` |
 
-## خطا
+## Public
 
-Problem Details با `code` پایدار؛ بدون افشای Secret.  
-نبود If-Match در mutation → 428.
+| Method | Path | توضیح |
+|--------|------|--------|
+| GET | `/api/posts` | فقط published |
+| GET | `/api/posts/{id}` | فقط published؛ وگرنه 404 یکسان |
 
-## وضعیت فاز ۱
+## کدهای خطای پایدار (نمونه)
 
-هنوز فقط `GET /health` برای اثبات Host زنده است؛ مسیرهای بالا از گام ۱۱ به بعد اضافه می‌شوند.
+`unauthorized` · `forbidden` · `not_found` · `validation_error` · `conflict` · `precondition_required` · `stale_version`

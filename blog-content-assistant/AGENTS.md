@@ -29,13 +29,15 @@
 - مستندات و پیام‌های انسانی: فارسی
 - شناسه‌های کد: انگلیسی
 
-## ساخت و آزمون (وضعیت فعلی — پایان گام ۱۰)
+## ساخت و آزمون (وضعیت فعلی — پایان گام ۱۵)
 
-```bash
-python -m venv .venv
+```powershell
+py -3 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -e ".[dev]"
 pytest
-# اجرای Host (نیاز به BLOG_LAB_DATABASE_PATH):
-# uvicorn blog_lab.api.main:create_app --factory --app-dir src
+$env:BLOG_LAB_DATABASE_PATH = "./data/blog_lab.db"
+uvicorn blog_lab.api.main:create_app --factory --app-dir src
 ```
+
+گزارش گام ۱۱–۱۵: [`docs/lab-steps-11-15.md`](docs/lab-steps-11-15.md)

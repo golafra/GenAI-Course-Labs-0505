@@ -13,8 +13,8 @@ flowchart RL
   S10 --> NEXT["۱۱–۱۵<br/>Auth → Post → Editor → Hardening → QuickStart"]
 ```
 
-**انجام‌شده:** گام‌های مفهومی ۱–۱۰  
-**انجام‌نشده:** Auth واقعی، Aggregate پست، Editor، Public Hardening (۱۱–۱۵)
+**انجام‌شده در این سند:** گام‌های مفهومی ۱–۱۰  
+**ادامه:** گام‌های ۱۱–۱۵ در [`lab-steps-11-15.md`](lab-steps-11-15.md) تکمیل شده‌اند.
 
 ---
 

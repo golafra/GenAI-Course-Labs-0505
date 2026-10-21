@@ -1,33 +1,18 @@
 # blog-content-assistant
 
-آزمایشگاه شخصی Python برای مسیر **Workshop-1** دوره (BlogSpecLab) با رویکرد SDD.
+آزمایشگاه شخصی Python برای مسیر **Workshop-1** با رویکرد SDD.
 
-- **Upstream مفهومی:** [Workshop-1](https://github.com/oroumand/SoftwareEngineering-GenAI-0505/tree/main/Workshop-1)  
-- **وضعیت:** معادل گام‌های **۱ تا ۱۰** انجام شده؛ آمادهٔ شروع گام **۱۱ (Auth)**
+- **وضعیت:** معادل گام‌های **۱ تا ۱۵** انجام شده  
+- **Upstream مفهومی:** [Workshop-1](https://github.com/oroumand/SoftwareEngineering-GenAI-0505/tree/main/Workshop-1)
 
-## این پروژه چیست / چیست نیست
+## گزارش‌های تکلیف
 
-| است | نیست |
-|-----|------|
-| مسیر SDD کارگاه با Python | کپی خط‌به‌خط نمونهٔ .NET استاد |
-| Spec / Plan / Tasks فارسی | محصول Production کامل |
-| اسکلت + `/health` + تست Startup | Auth و Post (از گام ۱۱) |
+| سند | محتوا |
+|-----|--------|
+| [docs/lab-steps-01-10.md](docs/lab-steps-01-10.md) | اسناد SDD + اسکلت فاز ۱ |
+| [docs/lab-steps-11-15.md](docs/lab-steps-11-15.md) | Auth → Author → Editor → Hardening → QuickStart |
 
-جزئیات تکلیف‌محور و فلوچارت: [`docs/lab-steps-01-10.md`](docs/lab-steps-01-10.md)
-
-## ساختار
-
-```text
-.specify/memory/constitution.md
-AGENTS.md
-docs/architecture/technical-baseline.md
-docs/lab-steps-01-10.md
-specs/001-blog-post-management/
-src/blog_lab/{domain,application,infrastructure,api}/
-tests/
-```
-
-## اجرا
+## اجرای سریع
 
 ```powershell
 py -3 -m venv .venv
@@ -38,8 +23,20 @@ $env:BLOG_LAB_DATABASE_PATH = "./data/blog_lab.db"
 uvicorn blog_lab.api.main:create_app --factory --app-dir src --reload
 ```
 
+جزئیات Demo: [`specs/001-blog-post-management/quickstart.md`](specs/001-blog-post-management/quickstart.md)
+
+## معماری
+
+```text
+src/blog_lab/
+  domain/          # Post aggregate
+  application/     # Use cases + UserAccess + AppResult
+  infrastructure/  # SQLite store
+  api/             # FastAPI routes (thin)
+```
+
 ## مسیر کارگاه
 
 ```text
-۱–۹ اسناد  →  ۱۰ اسکلت (اینجا)  →  ۱۱ Auth  →  ۱۲ Post  →  ۱۳ Editor  →  ۱۴ Hardening  →  ۱۵ QuickStart
+۱–۹ اسناد → ۱۰ اسکلت → ۱۱ Auth → ۱۲ Author → ۱۳ Editor → ۱۴ Hardening → ۱۵ QuickStart ✅
 ```

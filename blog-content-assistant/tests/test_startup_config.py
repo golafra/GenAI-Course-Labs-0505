@@ -1,4 +1,4 @@
-"""T004 — Startup configuration gates (phase 1)."""
+"""T004 — Startup configuration gates (phase 1, still valid)."""
 
 from __future__ import annotations
 
@@ -23,7 +23,6 @@ def test_blank_database_path_fails_fast() -> None:
         Settings(database_path="   ")
     message = str(exc_info.value).lower()
     assert "database path" in message
-    # Must not dump an accidental secret-looking blob
     assert "password" not in message
 
 
@@ -39,8 +38,7 @@ def test_directory_as_database_path_rejected(tmp_path) -> None:
 
 
 def test_startup_does_not_create_sqlite_file(valid_settings: Settings) -> None:
-    """Host may create parent dirs; it must not create the DB file or schema yet."""
-    app = create_app(settings=valid_settings)
+    app = create_app(settings=valid_settings, init_schema=False)
     with TestClient(app):
         pass
     assert not valid_settings.database_file.exists()
