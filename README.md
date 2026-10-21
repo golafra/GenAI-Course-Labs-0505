@@ -31,6 +31,7 @@
 |------|--------|
 | [class-research/spec-vs-plan-prompt.md](class-research/spec-vs-plan-prompt.md) | بعد از Spec آیا پرامپت Plan لازم است؟ (فلوچارت + چک‌لیست) |
 | [class-research/human-in-agentic-sdlc.md](class-research/human-in-agentic-sdlc.md) | چرخهٔ استاندارد حضور انسان در تولید نرم‌افزار با Agentها |
+| [class-research/multi-agent-speckit-workflow.md](class-research/multi-agent-speckit-workflow.md) | Multi-Agent و Workflow در Spec Kit / SDD |
 
 ## رویکرد کلی
 

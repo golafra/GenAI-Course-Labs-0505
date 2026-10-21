@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1 — ۱۴۰۴/۰۷/۲۹ (2026-10-21)
+
+### افزوده شد
+
+- تصویر مرجع در `class-research/spec-vs-plan-prompt.md` (`assets/spec-plan-workflow.webp`)
+- تحقیق کلاسی «Multi-Agent و Workflow در Spec Kit» (`class-research/multi-agent-speckit-workflow.md`)
+
 ## 0.2.0 — ۱۴۰۴/۰۷/۲۹ (2026-10-21)
 
 ### افزوده شد
